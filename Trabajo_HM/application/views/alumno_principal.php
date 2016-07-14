@@ -86,7 +86,9 @@
                         <li>
                             <a href="#"><i class="fa fa-laptop"></i><b>Inicio </b><span class="fa arrow"></span></a>
                         </li>
-
+                        <li>                           
+                            <a href="#"><i class="fa fa-users fa-fw"></i><b>Alumnos </b><span class="fa arrow"></span></a>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i><b>Ver Asistencia </b><span class="fa arrow"></span></a>
                         </li>
