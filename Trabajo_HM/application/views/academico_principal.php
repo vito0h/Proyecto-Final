@@ -66,7 +66,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                           <a href="<?php echo base_url() ?>index.php/Controlador/cerrar_sesion"><i class="fa fa-sign-out fa-fw"></i> Desconectar</a>
+                           <a href="<?php echo base_url() ?>index.php/Inicio/salir"><i class="fa fa-sign-out fa-fw"></i> Desconectar</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
