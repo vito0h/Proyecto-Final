@@ -10,10 +10,11 @@ class Inicio extends CI_Controller {
     }
     
     public function index(){
-        $this->load->view("Usuario/Header");
         if(!empty($this->session_id)){
             $valor=$this->session->userdata('login');
-            //print_r($valor);
+            echo "LOL";
+            print_r($valor);
+            echo "LOL";
             if($valor->tipo=='3'){//principal o docente principal
                 redirect(base_url().'index.php/principal'); //puede ser redirect o view
             }
@@ -24,17 +25,20 @@ class Inicio extends CI_Controller {
                 redirect(base_url().'index.php/Alumno');    //puede ser redirect o view
             }
             else{
-                $this->load->view("Usuario/inicio");   
+                $this->load->view("Usuario/Header");
+                $this->load->view("Usuario/inicio");
+                $this->load->view("Usuario/Footer");   
             }   
         }else{
-            $this->load->view("Usuario/inicio");    
+            $this->load->view("Usuario/Header");
+            $this->load->view("Usuario/inicio");
+            $this->load->view("Usuario/Footer");
         }
-        $this->load->view("Usuario/Footer");
     }
     public function validar(){
         $post=new stdClass();
         $datos=new stdClass();
-        $this->load->view("Usuario/Header");
+        
         if($this->input->post()==TRUE){
             //capturando entrada
             $post->Rut=$this->input->post("Rut");
@@ -54,23 +58,25 @@ class Inicio extends CI_Controller {
             if($Salida->tipo=='3'){//Academico principal
                 $this->session->set_userdata("principal");//crea la session con nombre
                 $this->session->set_userdata("login",$Salida);
-                redirect(base_url().'index.php/Administrador',$datos);
+                $this->index();
             }
             else if($Salida->tipo=='2'){//Academico asistente
                 $this->session->set_userdata("Asistente");//crea la session con nombre
                 $this->session->set_userdata("login",$Salida);
-                redirect(base_url().'index.php/Promedio',$datos);
+                $this->index();
             }
             else if($Salida->tipo=='1'){//Alumno
                 $this->session->set_userdata("Alumno");//crea la session con nombre
                 $this->session->set_userdata("login",$Salida);
-                redirect(base_url().'index.php/Invitado',$datos);
+                $this->index();
             }
         }
         else{
+            $this->load->view("Usuario/Header");
             $this->load->view("Usuario/inicio");//no entra y sale a la pantalla principal
+            $this->load->view("Usuario/Footer");
         }
-        $this->load->view("Usuario/Footer");
+        
     }
     public function salir(){//destruye la session php
         $this->session->unset_userdata(array('login'=>''));
